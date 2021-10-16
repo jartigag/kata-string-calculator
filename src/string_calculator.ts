@@ -1,13 +1,17 @@
 export default class StringCalculator {
-    Add(strNumbers: string): number {
-        const separatorIndicator = strNumbers.substring(0,2)
+    add(strInput: string): number {
+        const [separator, strNumbers] = this.extractNumbersAndSeparator(strInput)
+        let numbers = strNumbers.replace('\n',separator).split(separator).map(Number)
+        return numbers.reduce((a, b) => a+b)
+    }
+
+    extractNumbersAndSeparator(strInput: string): string[] {
+        let separator = ','
+        const separatorIndicator = strInput.substring(0,2)
         if (separatorIndicator=='//') {
-            const separator = strNumbers.substr(2).substr(0, strNumbers.indexOf('\n')-2)
-            let numbers = strNumbers.replace(separatorIndicator,'').replace('\n',separator).split(separator).map(Number)
-            return numbers.reduce((a, b) => a+b)
-        } else {
-            let numbers = strNumbers.replace('\n',',').split(',').map(Number)
-            return numbers.reduce((a, b) => a+b)
+            separator = strInput.substr(2).substr(0, strInput.indexOf('\n')-2)
         }
+        if (separatorIndicator=='//') { strInput = strInput.substr(2) }
+        return Array(separator, strInput)
     }
 }
