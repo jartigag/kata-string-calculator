@@ -3,15 +3,15 @@ import StringCalculator from '../src/string_calculator'
 describe('Calculator', () => {
     const calculator = new StringCalculator()
 
-    it('empty string returns 0', () => {
+    it('should return 0 if an empty string is passed to Add', () => {
         expect(calculator.Add('')).toEqual(0)
     })
 
-    it('"1" returns 1', () => {
+    it('should return 1 if "1" is passed to Add', () => {
         expect(calculator.Add("1")).toEqual(1)
     })
 
-    it('"1,2" returns 3', () => {
+    it('should return 3 if "1,2" is passed to Add', () => {
         expect(calculator.Add("1,2")).toEqual(3)
     })
 })
