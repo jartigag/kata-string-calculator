@@ -22,4 +22,8 @@ describe('Calculator', () => {
     it('should return 6 if "1\n2,3" is passed to Add', () => {
         expect(calculator.Add("1\n2,3")).toEqual(6)
     })
+
+    it('should return "//" if "//;\n1;2" is passed to Add', () => {
+        expect(calculator.Add("//;\n1;2")).toEqual(3)
+    })
 })
